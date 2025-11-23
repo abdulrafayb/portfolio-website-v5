@@ -8,7 +8,7 @@
 @theme {
   --font-body: 'inter', sans-serif;
   --font-heading: 'syne', sans-serif;
-  --color-gradient: linearGradient(
+  --color-gradient: linear-gradient(
     90deg,
     #ff4d6d 0%,
     #bd3eb2 25%,
@@ -51,5 +51,32 @@
       background: var(--color-gradient);
       z-index: -1;
     }
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+
+  .btn {
+    background: linear-gradient(#000000, #000000) padding-box,
+      var(--color-gradient) border-box;
+  }
+
+  .btn:hover {
+    background: var(--color-gradient) padding-box,
+      var(--color-gradient) border-box;
+    color: #ffffff;
+  }
+
+  .btn-light {
+    background: linear-gradient(#ffffff, #ffffff) padding-box,
+      var(--color-gradient) border-box;
+  }
+}
+
+@media (max-width: 1023px) {
+  h1::before {
+    bottom: 4px;
   }
 }
