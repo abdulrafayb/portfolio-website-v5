@@ -2,7 +2,7 @@ import GradientButton from '../components/GradientButton';
 
 function Hero() {
   return (
-    <div>
+    <div className='relative overflow-hidden'>
       <div className='main-container h-screen flex flex-col lg:justify-center items-start lg:py-12 max-lg:pt-40'>
         <h1 className='text-3xl lg:text-[3.2vw] uppercase font-heading font-semibold'>
           Abdul Rafay
