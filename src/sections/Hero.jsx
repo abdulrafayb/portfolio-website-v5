@@ -1,8 +1,82 @@
 import GradientButton from '../components/GradientButton';
 
+import { useRef } from 'react';
+
+import { gsap } from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
+
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
+
 function Hero() {
+  const heroRef = useRef(null);
+
+  useGSAP(() => {
+    ScrollTrigger.create({
+      trigger: heroRef.current,
+      start: 'top top',
+      end: 'bottom top',
+      pin: true,
+      pinSpacing: false,
+      scrub: 1,
+    });
+
+    SplitText.create('h1', {
+      type: 'lines, words',
+      mask: 'lines',
+      autoSplit: true,
+      onSplit(self) {
+        gsap.from(self.words, {
+          y: 100,
+          opacity: 0,
+          stagger: 0.1,
+        });
+      },
+    });
+
+    SplitText.create('h2', {
+      type: 'lines, words',
+      mask: 'lines',
+      autoSplit: true,
+      onSplit(self) {
+        gsap.from(self.words, {
+          y: 100,
+          opacity: 0,
+          stagger: 0.15,
+          delay: 0.3,
+        });
+      },
+    });
+
+    gsap.from('.gradient-btn', {
+      y: 40,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      delay: 1.25,
+    });
+
+    gsap.from('.star svg', {
+      scale: 0,
+      rotate: 180,
+      opacity: 0,
+      transformOrigin: 'center center',
+      duration: 1.3,
+      ease: 'back.out(1.7)',
+      onComplete: () => {
+        gsap.to('.star svg', {
+          rotate: '+=360',
+          duration: 20,
+          ease: 'linear',
+          repeat: -1,
+        });
+      },
+    });
+  });
+
   return (
-    <div className='relative overflow-hidden'>
+    <div ref={heroRef} className='relative overflow-hidden'>
       <div className='main-container h-screen flex flex-col lg:justify-center items-start lg:py-12 max-lg:pt-40'>
         <h1 className='text-3xl lg:text-[3.2vw] uppercase font-heading font-semibold'>
           Abdul Rafay
@@ -13,6 +87,7 @@ function Hero() {
         <GradientButton
           text="Let's Talk"
           link='mailto:abdulrafay200066@gmail.com'
+          className='gradient-btn'
         />
       </div>
 

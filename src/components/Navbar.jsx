@@ -1,8 +1,26 @@
 import Logo from '/public/logo.svg';
 
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+import { useRef } from 'react';
+
 function Navbar() {
+  const navbarRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(navbarRef.current, {
+      opacity: 0,
+      y: -100,
+      duration: 0.6,
+    });
+  });
+
   return (
-    <nav className='fixed top-0 w-full'>
+    <nav
+      ref={navbarRef}
+      className='fixed top-0 w-full mix-blend-difference z-30'
+    >
       <div className='main-container py-6 flex items-center justify-between'>
         <img src={Logo} alt='Logo' className='h-10 w-auto' />
 
