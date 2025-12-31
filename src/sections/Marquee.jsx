@@ -1,4 +1,4 @@
-import star from '/public/star.svg';
+import star from '../assets/star.svg';
 
 function Marquee() {
   return (
