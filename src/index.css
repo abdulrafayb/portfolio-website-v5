@@ -113,6 +113,10 @@
     animation: rotate360 10s linear infinite reverse;
     transform-origin: center;
   }
+
+  .menu-link {
+    @apply text-[10wv] lg:text-[6vw] font-heading font-medium uppercase lg:opacity-60 hover:opacity-100 transition-opacity duration-300;
+  }
 }
 
 @media (max-width: 1023px) {

@@ -1,6 +1,6 @@
 import GradientButton from '../components/GradientButton';
 
-import { projectsData } from '../components/ProjectsData';
+import { projects } from '../components/ProjectsData';
 import { useRef } from 'react';
 
 import { gsap } from 'gsap';
@@ -47,7 +47,7 @@ function Work() {
 
       <div ref={projectRef}>
         <div className='flex gap-4 lg:gap-8 ms-4 lg:ms-[40%] mt-6'>
-          {projectsData.map(({ id, name, image, link }) => (
+          {projects.map(({ id, name, image, link }) => (
             <a
               key={id}
               href={link}
